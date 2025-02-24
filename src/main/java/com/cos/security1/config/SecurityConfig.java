@@ -29,7 +29,10 @@ public class SecurityConfig {
                 )
                 .formLogin(login -> login
                         .loginPage("/loginForm") // 커스텀 로그인 페이지 설정
+                        .loginProcessingUrl("/login") // "/login" 주소가 호출이 되면 시큐리티가 낚아채서 대신 로그인 진행
+                        .defaultSuccessUrl("/")
                         .permitAll() // 로그인 페이지 접근 허용
+
                 )
                 .build(); // `http.build()`를 호출해야 `SecurityFilterChain`을 반환할 수 있음!
     }
